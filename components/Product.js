@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-function Product({ item }) {
+function ProductItem({ item,addtocart }) {
   return (
     <div className="bg-white rounded-xl mb-5 block">
       <Link href={`/product/${item.slug}`}>
@@ -15,10 +15,11 @@ function Product({ item }) {
         </a>
         </Link>
         <p className="p-2">{item.price}</p>
-        <button className="rounded-xl bg-gray-700 text-white px-4 py-2">Add to cart</button>
+        <button onClick={()=>addtocart(item)}
+         className="rounded-xl bg-gray-700 text-white px-4 py-2">Add to cart</button>
       </div>
     </div>
   )
 }
 
-export default Product
+export default ProductItem

@@ -1,21 +1,25 @@
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
-import productItems from '../../data/products.json'
 import Image from "next/image";
 import { useContext } from "react";
 import { CartContext } from "../../context/Cart";
+import products from "../../data/products";
+
+import db from "../../utils/db";
+
+import Product from "../../models/product";
+
+
+import { toast } from 'react-toastify'
 
 
 
-function ProductPage(){
+function ProductPage({product}){
    const {state , dispatch} =useContext(CartContext)
    
    const router = useRouter()
 
-   const {query}= useRouter()
-   const {slug}= query
-
-   const product = productItems.find((item)=> item.slug === slug)
+  
 
 
    if (!product){
@@ -29,16 +33,15 @@ function ProductPage(){
         const qty = existingItem ? existingItem.qty + 1 : 1
 
 
-        if (product.count < qty){
-            alert('Product is not found')
-             
-            return
-        }
+    
 
 
         dispatch({type :'ADD_ITEMS' , payload: {...product , qty}})
 
-        router.push('/cart')
+      
+
+        toast.success('Product Added!!!')
+
     }
 
 return(
@@ -79,3 +82,21 @@ return(
 
 
 export default ProductPage
+
+
+
+export async function getServerSideProps (context) {
+
+    const {params} = context
+    const {slug} = params
+
+    await db.connect()
+
+     const product = await Product.findOne({slug}).lean()
+    return {
+        props: {
+            product: product ? db.convertToObj(product) : null
+        }
+    }
+
+}

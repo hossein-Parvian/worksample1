@@ -14,6 +14,11 @@ import DropDown from './DropDown'
 import Cookies from 'js-cookie'
 
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+
+
 
 
 
@@ -45,6 +50,7 @@ function Layout({ title, children }) {
       <Head>
         <title>{`${title} - Shopping`}</title>
       </Head>
+      <ToastContainer position='bottom-center' limit={1}/>
       <div className='flex min-h-screen flex-col justify-between'>
         <header>
           <nav className='flex h-14 px-8 justify-between items-center bg-white border-b-4'>
