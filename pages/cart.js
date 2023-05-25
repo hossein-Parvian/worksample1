@@ -73,8 +73,8 @@ function removeItemHandler (item){
            
                 <div>
                     <button  className="rounded-xl bg-gray-700 text-white 
-                    px-4 py-2 hover:-translate-y-0.5 duration-200 hover:shadow-lg mt-96"
-                    onClick={()=> router.push('login?redirect=/shipping')}
+                    px-4 py-2 hover:-translate-y-0.5 duration-200 hover:shadow-lg mt-86"
+                    onClick={()=> router.push('shipping')}
                     >Checkout</button>
                   </div>
         </div> 
@@ -86,4 +86,4 @@ function removeItemHandler (item){
 }
 
 
-export default dynamic(()=>Promise.resolve(CartPage) , {ssr: false})
+export default dynamic(() => Promise.resolve(CartPage) , {ssr: false})

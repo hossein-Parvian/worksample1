@@ -6,7 +6,7 @@ export const CartContext = createContext()
 
 const initialState= {
     cart: Cookies.get('cart')? JSON.parse(Cookies.get('cart')):
-    {cartItems:[]}
+    {cartItems:[] ,shippingData :{}}
 }
 
 function reducer (state ,action){
@@ -33,6 +33,22 @@ switch(action.type){
 
         return{...state , cart:{...state.cart , cartItems}}
     }
+
+    case 'SAVE_SHIPPING_DATA': {
+        return {
+            ...state,
+            cart:{
+             ...state.cart,
+             shippingData:{
+                 ...state.cart.shippingData,
+                 ...action.payload,
+             },
+            },
+         }
+    }
+     
+
+
     default:
         return state
 }

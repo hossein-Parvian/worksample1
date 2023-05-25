@@ -29,12 +29,52 @@ const products = [
   {
     title: "Book 4",
     price: 250,
-    slug: "book-5",
+    slug: "book-4",
     description: "New Book",
     cat: "Books",
     count: 4,
     image: "/images/sincerely-media-nGrfKmtwv24-unsplash.jpg"
-  }
+  },
+
+  {
+    title: "Book 5",
+    price: 250,
+    slug: "book-5",
+    description: "New Book",
+    cat: "Books",
+    count: 4,
+    image: "/images/sincerely-media-CXYPfveiuis-unsplash.jpg"
+  },
+
+  {
+    title: "Book 6",
+    price: 250,
+    slug: "book-6",
+    description: "New Book",
+    cat: "Books",
+    count: 4,
+    image: "/images/studio-media-9DaOYUYnOls-unsplash.jpg"
+  },
+
+  {
+    title: "Book 7",
+    price: 250,
+    slug: "book-7",
+    description: "New Book",
+    cat: "Books",
+    count: 4,
+    image: "/images/The-Art-of-War-by-Sun-Tzu-Book.jpg"
+  },
+
+  {
+    title: "Book 8",
+    price: 250,
+    slug: "book-8",
+    description: "New Book",
+    cat: "Books",
+    count: 4,
+    image: "/images/IMG_7380.jpg"
+  },
 ]
 
 

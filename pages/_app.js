@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 
-import {SessionProvider} from 'next-auth/react'
+import {SessionProvider, useSession} from 'next-auth/react'
+
+import {useRouter} from 'next/router'
 
 import { CartContextProvider } from '../context/Cart'
 
@@ -9,13 +11,40 @@ function MyApp({ Component, pageProps: {session, ...pageProps} }) {
     <div className='bg-gray-100'>
       <SessionProvider session={session}>
       <CartContextProvider>
-      <Component {...pageProps} />
+        {Component.auth ? (
+          <Auth>
+            <Component {...pageProps} />
+          </Auth>
+        ):(
+          <Component {...pageProps} />
+        )
+        }
+     
       </CartContextProvider>
       </SessionProvider>
      
       
     </div>
   )
+}
+
+function Auth ({children}){
+
+const router = useRouter()
+
+const {status} = useSession({
+  required: true,
+  onUnauthenticated(){
+    router.push('/unauthorized')
+  },
+})
+
+if(status === 'loading'){
+  return 'Loading'
+}
+
+return children
+
 }
 
 export default MyApp

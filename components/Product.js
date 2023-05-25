@@ -3,11 +3,13 @@ import Link from 'next/link'
 function ProductItem({ item,addtocart }) {
   return (
     <div className="bg-white rounded-xl mb-5 block">
+      
       <Link href={`/product/${item.slug}`}>
-        <a>
-          <img src={item.image} className='rounded-t-xl'/>
+        <a >
+          <img src={item.image} className='rounded-t-xl h-56 w-96 ' />
         </a>
       </Link>
+    
       <div className="flex flex-col justify-center items-center p-5">
         <Link href={`/product/${item.slug}`}>
         <a >
